@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOLDEN-SIEVE-2025 | Verifiable Quantum Twin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; background-color: #020305; color: #f8fafc; font-family: 'Inter', sans-serif; overflow: hidden; }
+    canvas { display: block; }
+    .glass { background: rgba(5, 7, 10, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    
+    /* CRT Scanline Effect */
+    .scanlines::before {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      z-index: 1000;
+      background-size: 100% 3px, 3px 100%;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.99; }
+      50% { opacity: 1; }
+      100% { opacity: 0.99; }
+    }
+    .flicker { animation: flicker 0.1s infinite; }
+
+    @keyframes pulse-glow-purple {
+      0% { box-shadow: 0 0 10px rgba(168, 85, 247, 0.3); border-color: rgba(168, 85, 247, 0.4); }
+      50% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.7); border-color: rgba(168, 85, 247, 1); }
+      100% { box-shadow: 0 0 10px rgba(168, 85, 247, 0.3); border-color: rgba(168, 85, 247, 0.4); }
+    }
+    .animate-pulse-glow-purple {
+      animation: pulse-glow-purple 2s infinite ease-in-out;
+    }
+
+    input[type=range] { -webkit-appearance: none; background: transparent; }
+    input[type=range]:focus { outline: none; }
+    input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 8px; cursor: pointer; background: rgba(255,255,255,0.1); border-radius: 4px; }
+    input[type=range]::-webkit-slider-thumb { height: 24px; width: 24px; border-radius: 50%; background: #00F2FF; cursor: pointer; -webkit-appearance: none; margin-top: -8px; box-shadow: 0 0 15px rgba(0, 242, 255, 0.8); border: 2px solid white; }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+    "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+    "three": "https://esm.sh/three@0.166.1",
+    "three/examples/jsm/controls/OrbitControls": "https://esm.sh/three@0.166.1/examples/jsm/controls/OrbitControls",
+    "recharts": "https://esm.sh/recharts@2.13.3?external=react,react-dom",
+    "katex": "https://esm.sh/katex@0.16.9",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "three/": "https://esm.sh/three@^0.182.0/"
+  }
+}
+</script>
+</head>
+<body class="scanlines">
+  <div id="root"></div>
+  <script type="module" src="index.tsx"></script>
+</body>
+</html>
